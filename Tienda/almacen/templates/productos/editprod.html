@@ -1,0 +1,39 @@
+{% extends 'baseautenticate.html' %}
+{% load static %}
+{% block title %}
+    Game Zone
+{% endblock title %}
+{% block content %}
+{% include 'includes/headerext.html' %}
+    <div class="container" id="registration-form" style="margin-top: 0;">
+      <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+          <div class="image"></div>
+            <div class="frm">
+              <h1 style="margin-top: 10px; font-size: xx-large; margin-bottom: 5px;">Actualizar</h1>
+              <form>
+                  <div class="form-group">
+                      {{form.categoria}}
+                  </div>
+                  <div class="form-group">
+                      {{form.marca}}
+                  </div>
+                  <div class="form-group">
+                    {{form.modelo}}
+                  </div>
+                  <div class="form-group">
+                    {{form.precio}}
+                  </div>
+                  <div class="form-group">
+                    <label for="" style="color: aliceblue;">Cargue Una Imagen:</label>
+                    {{form.imagen}}
+                  </div>
+                  <div class="form-group" style="margin-bottom: auto;">
+                    <input class="btn" style="background:rgb(215 12 49) ; color: aliceblue; margin-top: 1rem;" type="submit" value="Guardar">
+                    <a href="{% url 'prod_app:selectprod' %}" class="btn" style="background:rgb(215 12 49) ; color: aliceblue; border-color: rgb(215 12 49); margin-left: 1rem; margin-bottom: -1px;">Cancelar</a>
+                  </div>
+              </form>
+            </div>
+          </div>
+      </form>
+    </div>
+{% endblock content %}

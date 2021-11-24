@@ -1,0 +1,40 @@
+{% extends 'baseautenticate.html' %}
+{% load static %}
+{% csrf_token %}
+{% block title %}
+    Game Zone
+{% endblock title %}
+{% block content %}
+{% include 'includes/headerext.html' %}
+<div class="container">
+
+    <h1 style="margin-top: 1rem;">Equipos Publicados</h1>
+
+    <table class="list table table-bordered mt-6 text-center" style="margin-top: 1rem; font-size: larger; border: groove; border-color: #df2533;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>CATEGORIA</th>
+                <th>MARCA</th>
+                <th>MODELO</th>
+                <th>PRECIO</th>
+                <th>OPCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in products %}
+            <tr>
+                <th>{{p.id}}</th>
+                <th>{{p.categoria}}</th>
+                <th>{{p.marca}}</th>
+                <th>{{p.modelo}}</th>
+                <th>{{p.precio}}</th>
+                <td>
+                    <a href="{% url 'prod_app:editprod' p.id %}" class="btn" style="background: rgb(204, 44, 44); color: aliceblue;">Editar</a>
+                    <a href="{% url 'prod_app:deleteprod' p.id %}" class="btn" style="background: rgb(204, 44, 44); color: aliceblue;">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

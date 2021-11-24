@@ -1,0 +1,56 @@
+{% extends 'baseautenticate.html' %}
+{% load static %}
+{% block title %}
+    Game Zone
+{% endblock title %}
+{% csrf_token %}
+{% block content %}
+{% include "includes/header.html" %}
+<div class="container" style="margin-top:4rem;">
+  <div class="no alert " role="alert" style="color: #ffffff;background-color: #181413; margin-top: 1rem; font-size: larger; border: groove; border-color: #df2533;">
+    <table class="table table-bordered" style="border-color: brown;">
+      <thead>
+        <tr>
+          <th scope="row" colspan="3" class="text-center" style="color: aliceblue;">CARRITO</th>
+        </tr>
+        <tr>
+          <th scope="col" style="color: aliceblue;">NOMBRE</th>
+          <th scope="col" style="color: aliceblue;">PRECIO</th>
+          <th scope="col" style="color: aliceblue;">CANTIDAD</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% if request.session.carrito.items %}
+      {% for key, value in request.session.carrito.items %}
+        <tr>
+          <td style="color: aliceblue;">{{value.marca}}-{{value.modelo}}</td>
+          <td style="color: aliceblue;">${{value.precio}}</td>
+          <td style="color: aliceblue;">
+            <a href="{% url 'prod_app:Sub' value.producto_id %}" class="badge btn btn-dark badge-dark">-</a>
+            {{value.cantidad}}
+            <a href="{% url 'prod_app:Add' value.producto_id %}" class="badge btn btn-dark badge-dark">+</a>
+          </td>
+        </tr>
+      {% endfor %}
+      {% else %}
+      <tr>
+          <td colspan="3">
+              <h3 style="color: aliceblue; font-size: x-large;"> Sin Productos </h3>
+          </td>
+      </tr>
+      {% endif %}
+        <tr>
+          <th scope="row" style="color: aliceblue;">Total:</th>
+          <td colspan="2" style="color: aliceblue;">$ {{total_carrito}}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="row text-center">
+      <div class="col-3"><a href="{% url 'prod_app:Tienda' %}" class="btn" style="background-color: rgb(204, 44, 44); color: aliceblue; border-color: #101010;">Regresar</a></div>
+        <div class="col-3"><a href="{% url 'prod_app:CLS' %}" class="btn" style="background-color: rgb(204, 44, 44); color: aliceblue; border-color: #101010;">Limpiar</a></div> 
+        <div class="col-3"><a href="{% url 'prod_app:facturaprod' %}" class="btn" style="background-color: rgb(204, 44, 44); color: aliceblue; border-color: #101010;">Ver Factura</a></div>
+        <div class="col-3"><a href="{% url 'order_app:order' %}" class="btn" style="background-color: rgb(204, 44, 44); color: aliceblue; border-color: #101010;">Comprar</a></div>
+      </div>
+  </div>
+{% endblock content %}

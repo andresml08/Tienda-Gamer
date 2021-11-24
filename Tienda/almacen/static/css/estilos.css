@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: sans-serif;
+    background: #9b9a9a;
+    background: url(../img/FondoR.jpg);
+}
+
+h1 {
+    color: #fff;
+    text-align: center;
+}
+
+.color{
+    background-color:#181413 !important;
+    
+}
+
+.form-register{
+    width: 95%;
+    max-width: 400px;
+    margin-left: 8rem;
+    background: white;
+    border-radius: 7px;
+}
+
+.form__titulo{
+    background: rgb(209 24 30);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-weight: 100;
+    font-size: 30px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    border-bottom: 5px solid rgb(69 65 62);
+}
+
+.contenedor-inputs{
+    padding: 10px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+input{
+    margin-bottom: 15px;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 3px;
+    border: 1px solid darkgray;
+}
+
+.input-48{
+    width: 48%;
+}
+
+.input-100{
+    width: 100%;
+}
+
+.btn-enviar{
+    background: rgb(215 12 49);
+    color: #fff;
+    margin: auto;
+    padding: 10px 40px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.btn-enviar:active{
+    transform: scale(1.05);
+}
+
+.form__link{
+    width: 100%;
+    margin: 7px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.col:hover{
+    box-shadow: 0 8px 16px 0 rgb(215 12 49);
+}

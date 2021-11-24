@@ -1,0 +1,51 @@
+{% load static %}
+<nav class="color navbar navbar-expand-lg navbar-light bg-light" style="font-size: larger;"> 
+    <div class="container-fluid">
+      <a class="navbar-brand disabled" style="color: aliceblue; font-size: x-large;">Game Zone</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'prod_app:selectprod' %}" style="color: aliceblue;">Vender</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'verif_app:login' %}" style="color: aliceblue;">Vender</a>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link " href="#"style="color: aliceblue;">Soporte</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="#"style="color: aliceblue;">Ayuda</a>
+          </li>
+        </ul>
+        <div class="dropdown" style="margin-right: 1rem;">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #2e2d2f; border-color: #f7c5c9;">
+            Hola! {{user.username}}
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            {% if user.is_authenticated %}
+            <li><a class="dropdown-item"  href="{% url 'order_app:pedidos' %}">Mis Pedidos</a></li>
+            {% else %}
+            <li><a class="dropdown-item" href="{% url 'verif_app:login' %}">Mis Pedidos</a></li>
+            {% endif %}
+            <li><a class="dropdown-item" href="#">Configuracion</a></li>
+            
+            {% if user.is_authenticated %}
+            <li><a class="dropdown-item" href="{% url 'verif_app:salir' %}">Cerrar sesión</a></li>
+          </ul>
+          {% else %}
+          <li><a class="dropdown-item" href="{% url 'verif_app:login' %}">Iniciar sesión</a></li>
+          {% endif %}
+        </div>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"  style="margin-bottom: auto;">
+          <button class="btn btn-success" type="submit" style="background-color: rgb(204, 44, 44); border-color: black;">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>

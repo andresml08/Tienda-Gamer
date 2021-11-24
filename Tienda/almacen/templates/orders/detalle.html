@@ -1,0 +1,45 @@
+{% extends 'baseautenticate.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center" style="margin-top: 1rem;">Detalle del pedido #{{ datos.id }}#</h1>
+                <table class="list table table-bordered"  style="margin-top: 1rem; font-size: larger; border: groove; border-color: #df2533;">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio/u</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order_line in datos %}
+                           <tr class="text-center">
+                                <td>{{ order_line.marca }} - {{order_line.product.modelo}}</td>
+                                <td>{{ order_line.cantidad }}</td>
+                                <td>{{ order_line.precio}}</td>
+                                <td>{{ order_line.total}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td class="text-center">
+                                {{total}}
+                            </td>
+
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="row text-center">
+                    <div class="col-6"><a href="{% url 'order_app:pedidos' %}" class="btn" style="margin-top: 1.5rem; background-color: rgb(204, 44, 44); color: aliceblue;">Regresar</a></div>
+                    <div class="col-6"><a href="#" class="btn" style="margin-top: 1.5rem; margin-top: 1.5rem; background-color: rgb(204, 44, 44); color: aliceblue; ">Cancelar pedidos</a></div>
+            </div> 
+        </div>
+    </div>
+{% endblock content%}

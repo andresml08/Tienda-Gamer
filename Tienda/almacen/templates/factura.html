@@ -1,0 +1,27 @@
+{% extends 'baseautenticate.html' %}
+{% load static %}
+{% block title %}
+    Game Zone
+{% endblock title %}
+{% block content %}
+{% include "includes/headershop.html" %}
+<form method="POST">{% csrf_token %}
+<div class="card" style="width: 23rem; font-family: monospace; margin-top: 2rem; margin-inline: auto;">
+    <h4 style="text-align: center; margin-top: 1rem;">Factura Almacen JM</h4>
+    {% for key, value in request.session.carrito.items %}
+    <div class="card-body" style="margin-bottom: -1.5rem;">
+      <h5 class="card-title text-muted" style="font-size: inherit;">Categoria Del Producto: {{value.categoria}}</h5>
+      <h5 class="card-subtitle mb-2 text-muted" style="font-size: inherit;">Cantidad: {{value.cantidad}}</h5>
+      <h5 class="card-subtitle mb-2 text-muted" style="font-size: inherit;">Marca: {{value.marca}}</h5>
+      <h5 class="card-subtitle mb-2 text-muted" style="font-size: inherit;">Modelo: {{value.modelo}}</h5>
+      <h5 class="card-subtitle mb-2 text-muted" style="font-size: inherit;">Precio: ${{value.precio}}</h5>
+      <h5>------------------------------</h5>
+    </div>
+    {% endfor %}
+    <h5 class="card-subtitle mb-2" style="margin-top: 0.5rem; margin-left: 14px;">Total A Pagar: ${{total_carrito}}</h5>
+    <a href="#" style="margin-inline: auto; margin-bottom: 1rem; margin-top: 0.5rem;">
+    <button type="submit">Imprimir</button>
+</a>
+  </div>
+  </form>
+  {% endblock content %}

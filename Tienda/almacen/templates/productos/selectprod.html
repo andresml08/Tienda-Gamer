@@ -1,0 +1,25 @@
+{% extends 'baseautenticate.html' %}
+{% load static %}
+{% block title %}
+    Game Zone
+{% endblock title %}
+{% csrf_token %}
+{% block content %}
+{% include 'includes/headershop.html' %}
+<div class="container">
+    <div class="fondo row" style="margin-top: 2rem;">
+      <div class="col order-last">
+        <a class="btn " style="background:rgb(215 12 49) ; color: aliceblue; font-size: larger;" href="{% url 'prod_app:regprod' %}">Registrar Producto</a>
+      </div> 
+      <div class="col">
+        <a class="btn " style="background:rgb(215 12 49) ; color: aliceblue; font-size: larger;"  href="{% url 'prod_app:listaprod' %}">Mostrar Productos Publicados</a>
+      </div>
+    </div>
+</div>
+<h1 style="margin-top: 2rem;">Aqui podras ver como subir un producto!!</h1>
+  <div class="container">
+    <div class="ratio ratio-3x3" style="height: 30rem;">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/ynltUSwuT18" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+{% endblock content %}

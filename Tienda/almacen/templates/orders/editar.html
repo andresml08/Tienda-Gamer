@@ -1,0 +1,18 @@
+{% extends 'baseautenticate.html' %}
+{% load static %}
+{% block content %}
+{% include 'includes/headerext.html' %}
+<form method="POST">
+<div class="container">
+    {% csrf_token %}
+    <div class="coli card" style="width: 15rem; height: 14rem; border: 3px solid rgb(223 37 51); border-radius: 0.38rem; background: #101010; color: white; margin-top: 12rem; margin-left: 25rem;">
+        <div class="card-body">
+          <h5 class="card-title" style="text-align: center;">Modificar estado</h5>
+          <p class="card-text" style="margin-top: 2rem;">{{form.as_p}}</p>
+          <button class="btn" type="submit" style="background :#df2533; border-color: #101010; color: antiquewhite; margin-top: 0.8rem; margin-left: 3.7rem;">Guardar</button>
+        </div>
+      </div>
+    </form>
+</div>   
+{% endblock content %}
+    

@@ -1,0 +1,21 @@
+{% extends 'baseautenticate.html' %} 
+{% load static %}
+{% block title %}
+    Game Zone
+{% endblock title %}
+{% csrf_token %}
+{% block content %}
+{% include 'includes/headerext.html' %}
+<div class="container">
+    <div class="grid-x">
+        <h1 class="cell">Eliminar Producto: {{object.marca}} - {{object.modelo}}</h1>
+        <div class="cell">
+            <form method="POST">{% csrf_token %}
+                <p style="color: aliceblue; font-size: xx-large;">Esta Seguro De Eliminarlo?</p>
+                <input class="btn" type="submit" value="Eliminar" style="background:rgb(215 12 49) ; color: aliceblue; margin-top: 1rem;">
+                <a href="{% url 'prod_app:listaprod' %}" class="btn" style="background:rgb(215 12 49) ; color: aliceblue; border-color: rgb(215 12 49); margin-left: 1rem; margin-bottom: -1px;">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

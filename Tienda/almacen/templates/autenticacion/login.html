@@ -1,0 +1,21 @@
+{% extends 'baseautenticate.html' %}
+{% load static %}
+{% block title %}
+    Game Zone
+{% endblock title %}
+{% block content %}
+{% include "includes/headerext.html" %}
+<form action="" method="post" class="form-register" style="margin-top: 6.8rem;">
+    {% csrf_token %}
+    <h2 class="form__titulo" style="font-family:'Times New Roman', Times, serif">INICIAR SESIÓN</h2>
+    <div class="contenedor-input" style="padding: 10px 30px;">
+        <input type="text" name="username" placeholder="Nombre de usuario" class="input-100" required><br>
+       <input type="password" style="margin-top: 1rem;" name="password" placeholder="Contraseña" class="input-100" required><br>
+       {% for messages in messages %}
+            {{messages}}
+            {% endfor %}<br>
+       <input type="submit" value="Ingresar" class="btn-enviar" style="margin-inline: 6.3rem;">
+        <p class="form__link">¿No tengo una cuenta? <a href="{% url 'verif_app:registrar' %}">Ingresa aqui</a></p>
+    </div>
+</form>
+{% endblock content %}

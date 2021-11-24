@@ -1,0 +1,52 @@
+{% extends 'baseautenticate.html' %}
+
+{% load static %}
+
+{% block title %}Mis pedidos{% endblock %}
+
+{% block content %}
+{% include 'includes/headerext.html' %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <table class="table" style="color: aliceblue;">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Fecha</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                                <th>Cambiar estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in object_list %}
+                                <tr>
+                                    <td>{{ order.id }}</td>
+                                    <td>{{ order.created_at|date:'d/m/Y H:i' }}</td>
+                                    <td>{{ order.estado }}</td>
+                                    <td>
+                                        <a href="{% url 'order_app:detalle' order.id %}" class="btn" style="background-color: rgb(204, 44, 44); color: aliceblue;">Ver detalles</a>
+                                        <a href="{% url 'order_app:eliminar' order.id %}" class="btn" style="background-color: rgb(204, 44, 44); color: aliceblue;">Eliminar</a></td>
+                                        
+                                        {% if user.is_staff %}
+                                        <td><a href="{% url 'order_app:editar' order.id %}" class="btn" style="background-color: rgb(204, 44, 44); color: aliceblue;">Estado</a></td> 
+                                        {% else %}
+                                        <td><p>No eres un admin</p></td>
+                                        {% endif %}
+                                </tr>
+                            {% empty %}
+                                <tr>
+                                    <td colspan="4">
+                                        <div class="alert alert-danger">No tienes ningún pedido todavía.</div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

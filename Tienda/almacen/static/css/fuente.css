@@ -1,0 +1,10 @@
+@font-face {
+    font-family: Godofwar-wPz6;
+    src: url(../../fuente/Godofwar-wPz6.ttf) format(truetype);
+}
+
+
+
+body{
+    font-family: Godofwar-wPz6;
+}
